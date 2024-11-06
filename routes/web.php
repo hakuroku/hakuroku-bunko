@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\ComicCreateController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Comic;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/comics/create', [ComicCreateController::class, 'view'])->name('comic.create');
 
 Route::get('/', function () {
     return view('welcome');
