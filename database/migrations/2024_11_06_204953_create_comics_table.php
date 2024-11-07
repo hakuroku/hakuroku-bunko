@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('comics', function (Blueprint $table) {
             $table->id('comic_id');
-            $table->varchar('comic_title');
-            $table->varchar('series_title');
+            $table->string('comic_title');
+            $table->string('series_title');
             $table->string('comic_content');
-            $table->varchar('author_name');
+            $table->string('author_name');
             $table->timestamps();
         });
     }

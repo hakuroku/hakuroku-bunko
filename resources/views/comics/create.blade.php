@@ -31,14 +31,15 @@
 <body>
 
 <div class="comics-create_bg">
-    <form action="">
-        <label>
-            <div class="comics-create_dropzone">
+    <form method="post" action={{Route('comics.create')}}>
+        @csrf
+        
+            <div class="comics-create_dropzone" >
             </div>
             <input type="file" name="comic_content" multiple="multiple" class="comics-create_field">
-        </label><br>
+        <br>
         <label><span>作品名：</span><input type="text" name="comic_title"></label><br>
-        <label><span>シリーズ名：</span><input type="text" name="series_name"></label><br>
+        <label><span>シリーズ名：</span><input type="text" name="series_title"></label><br>
         <label><span>著者名：</span><input type="text" name="author_name"></label><br>
         <input type="submit" value="掲載する">
     </form>

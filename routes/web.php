@@ -5,7 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Comic;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/comics/create', [ComicCreateController::class, 'view'])->name('comic.create');
+Route::post('post', [ComicCreateController::class, 'create'])->name('comics.create');
+Route::get('/comics/create', [ComicCreateController::class, 'view'])->name('comics.create_view');
 
 Route::get('/', function () {
     return view('welcome');
