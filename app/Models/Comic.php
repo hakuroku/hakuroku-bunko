@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comic extends Model
 {
-    public function view() {
-        return view('comics.create');
-    }
+    protected $fillable = [
+        'comic_title',
+        'series_title',
+        'author_name'
+    ];
 }
