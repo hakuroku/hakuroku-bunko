@@ -16,11 +16,17 @@ class ComicCreateController extends Controller
         $author_name = $request->author_name;
         // if ($request->hasFile('comic_content')) {
             if (true) {
-            dump($request);
             Storage::makeDirectory($comic_title);
-            $url = Storage::url('app');
             $file = $request->file('comic_content');
-            $path = Storage::disk('local')->putFile($url, $file, "1");
+            dump($request);
+            $path = Storage::disk('local')->putFile($comic_title,$file);
+
+            $post = Comic::create([
+                'comic_title' => $comic_title,
+                'series_title' => $series_title,
+                'comic_content' => $comic_content,
+                'author_name' => $author_name
+            ]);
             return response()->json(
                 [
                     'message' => 'comic uploaded successfully', 
@@ -28,12 +34,6 @@ class ComicCreateController extends Controller
                 ]);
         }
 
-        $post = Comic::create([
-            'comic_title' => $comic_title,
-            'series_title' => $series_title,
-            'comic_content' => $comic_content,
-            'author_name' => $author_name
-        ]);
 
         return view('comics.create');
     }
