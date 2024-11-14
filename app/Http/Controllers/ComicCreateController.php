@@ -8,7 +8,7 @@ use App\Models\Comic;
 
 class ComicCreateController extends Controller
 {
-    public function create(Request $request)
+    public function upload(Request $request)
     {
         $comic_title = $request->comic_title;
         $series_title = $request->series_title;
@@ -35,11 +35,11 @@ class ComicCreateController extends Controller
         }
 
 
-        return view('comics.create');
+        return view('comics.upload');
     }
 
     public function view()
     {
-        return view('comics.create');
+        return view('upload');
     }
 }
