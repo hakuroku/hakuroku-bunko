@@ -8,28 +8,38 @@ use App\Models\Comic;
 
 class ComicCreateController extends Controller
 {
-    public function create(Request $request)
+    public function upload(Request $request)
     {
-
         $comic_title = $request->comic_title;
-        if ($request->hasFile('comic_content')) {
-
+        $series_title = $request->series_title;
+        $comic_content = $request->comic_content;
+        $author_name = $request->author_name;
+        // if ($request->hasFile('comic_content')) {
+            if (true) {
+            Storage::makeDirectory($comic_title);
             $file = $request->file('comic_content');
-            $path = Storage::disk('local')->putFile($comic_title, $file);
-            return response()->json(['message' => 'comic uploaded successfully', 'url' => Storage::disk('local')->url($path)]);
-        }
-        $post = Comic::create([
-            'comic_title' => $request->comic_title,
-            'series_title' => $request->series_title,
-            'comic_content' => $request->comic_content,
-            'author_name' => $request->author_name
-        ]);
+            dump($request);
+            $path = Storage::disk('local')->putFile($comic_title,$file);
 
-        return view('comics.create');
+            $post = Comic::create([
+                'comic_title' => $comic_title,
+                'series_title' => $series_title,
+                'comic_content' => $comic_content,
+                'author_name' => $author_name
+            ]);
+            return response()->json(
+                [
+                    'message' => 'comic uploaded successfully', 
+                    'url' =>  $path
+                ]);
+        }
+
+
+        return view('comics.upload');
     }
 
     public function view()
     {
-        return view('comics.create');
+        return view('upload');
     }
 }

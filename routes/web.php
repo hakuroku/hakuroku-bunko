@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\ComicCreateController;
+use App\Http\Controllers\ComicUploadController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Comic;
 use Illuminate\Support\Facades\Route;
 
-Route::post('post', [ComicCreateController::class, 'create'])->name('comics.create');
-Route::get('/comics/create', [ComicCreateController::class, 'view'])->name('comics.create_view');
+Route::post('post', [ComicUploadController::class, 'upload'])->name('comics.upload');
+Route::get('/comics/upload', [ComicUploadController::class, 'view'])->name('comics.upload_view');
 
 Route::get('/', function () {
     return view('welcome');
