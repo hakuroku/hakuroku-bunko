@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ComicGetController;
+use App\Http\Controllers\ComicUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use App\Http\Controllers\ComicGetController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::post('/upload', [ComicUploadController::class, 'upload']);
 Route::get('/comicGet', [ComicGetController::class, 'get']);
 
 Route::get('/books', [BookController::class, 'index']);
