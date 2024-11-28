@@ -31,7 +31,7 @@ class ComicUploadController extends Controller
             }
 
             //―――――データベースにインサート―――――――
-            $post = Comic::create([
+            Comic::create([
                 'comic_title' => $comic_title,
                 'series_title' => $series_title,
                 'comic_content' => $url,

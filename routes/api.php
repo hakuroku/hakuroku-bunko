@@ -17,6 +17,10 @@ use App\Http\Controllers\ComicUploadController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::options('/api/upload', function () {
+    return response()->json([], 200);
+});
 Route::post('/upload', [ComicUploadController::class, 'upload']);
 Route::get('/comicGet', [ComicGetController::class, 'get']);
 
