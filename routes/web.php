@@ -2,15 +2,14 @@
 
 use App\Http\Controllers\ComicUploadController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SeriesController;
 use App\Models\Comic;
 use App\Models\Series;
 use Illuminate\Support\Facades\Route;
 
-Route::post('post', [SeriesController::class, 'create'])->name('series.create');
-Route::post('post', [ComicUploadController::class, 'upload'])->name('comics.upload');
+// Route::post('post', [ComicUploadController::class, 'create'])->name('series.create');
+Route::post('/comics/upload', [ComicUploadController::class, 'upload'])->name('comics.upload');
 
-Route::get('/comics/upload', [ComicUploadController::class, 'view'])->name('comics.upload_view');
+Route::get('/comics/upload', [ComicUploadController::class, 'view']);
 
 Route::get('/', function () {
     return view('welcome');

@@ -72,20 +72,24 @@
 <body>
 
 <div class="comics-create_bg">
-    <form method="post" action={{Route('comics.upload')}} multiple="multiple" enctype="multipart/form-data">
+    
+    <form method="post" action={{Route('comics.upload')}}  enctype="multipart/form-data">
         @csrf
-        
             <div class="comics-create_dropzone" >
             </div>
-            <input type="file" name="comic_content[]" class="comics-create_field">
+            <input type="file" name="comic_content[]" multiple class="comics-create_field">
         <br>
-        <label><span>作品名：</span><input type="text" name="comic_title" value="akai"></label><br>
-        <p><span>シリーズ：</span><button class="series-button">シリーズを作成</button></p>
+        <label><span>作品名：</span><input type="text" name="comic_title"></label><br>
+        <label><span>シリーズ名：</span><input type="text" name="series_title"></label><br>
+        {{-- <p><span>シリーズ：</span><button class="series-button">シリーズを作成</button></p> --}}
+        <label><span>著者名：</span><input type="text" name="author_name" ></label><br>
+        <input type="submit" value="掲載する">
+    </form>
 
-        <div class="series-form">
+    {{-- <div class="series-form display-none">
             <button class="batu-icon series-button"><i class="fa-solid fa-xmark batu-img"></i></button>
             <form 
-            {{-- method="post" action={{Route('series.create')}} --}}
+            method="post" action={{Route('series.create')}}
             >
                 <p>シリーズ名：<br><input type="text" name="series_title"></p>
                 <p>あらすじ：<br><textarea name="series_caption"></textarea><br></p>
@@ -93,11 +97,7 @@
                 <input type="submit" value="作成する" >
             </div>
             </form>
-        </div>
-
-        <label><span>著者名：</span><input type="text" name="author_name" value="syuiro"></label><br>
-        <input type="submit" value="掲載する">
-    </form>
+        </div> --}}
 </div>
 
 </body>

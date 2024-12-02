@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ComicGetController;
 use App\Http\Controllers\ComicUploadController;
+use App\Http\Middleware\CorsMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ use App\Http\Controllers\ComicUploadController;
 Route::options('/api/upload', function () {
     return response()->json([], 200);
 });
-Route::post('/upload', [ComicUploadController::class, 'upload']);
+Route::post('/upload', [ComicUploadController::class, 'upload'])->middleware(CorsMiddleware::class);
 Route::get('/comicGet', [ComicGetController::class, 'get']);
 
 Route::get('/books', [BookController::class, 'index']);
