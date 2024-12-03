@@ -19,10 +19,7 @@ use App\Http\Middleware\CorsMiddleware;
 |
 */
 
-Route::options('/api/upload', function () {
-    return response()->json([], 200);
-});
-Route::post('/upload', [ComicUploadController::class, 'upload'])->middleware(CorsMiddleware::class);
+Route::post('/upload', [ComicUploadController::class, 'upload'])->middleware('cors');
 Route::get('/comicGet', [ComicGetController::class, 'get']);
 
 Route::get('/books', [BookController::class, 'index']);
