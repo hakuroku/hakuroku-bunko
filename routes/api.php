@@ -20,7 +20,7 @@ use App\Http\Middleware\CorsMiddleware;
 |
 */
 
-Route::post('/series_create', [SeriesController::class, 'create'])->middleware(('cors'));
+Route::post('/series_create', [SeriesController::class, 'create'])->middleware('cors');
 Route::post('/upload', [ComicUploadController::class, 'upload'])->middleware('cors');
 Route::get('/comicGet', [ComicGetController::class, 'get']);
 
