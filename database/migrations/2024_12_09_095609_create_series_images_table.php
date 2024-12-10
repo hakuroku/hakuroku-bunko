@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comics', function (Blueprint $table) {
-            $table->id('comic_id');
-            $table->string('comic_title');
-            $table->foreignId('series_title')->constrained( table: 'series', indexName: 'series_id');
-            $table->string('comic_content');
-            $table->string('author_name');
+        Schema::create('series_images', function (Blueprint $table) {
+            $table->id('series_imgs_id');
+            $table->binary('top_main_img');
+            $table->binary('top_link_img');
+            $table->binary('series_main_img');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comics');
+        Schema::dropIfExists('series_images');
     }
 };

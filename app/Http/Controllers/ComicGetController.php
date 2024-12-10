@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ComicGetController extends Controller
 {
     public function get() {
-        $path = Storage::url('app/');
+        $path = Storage::url('app/private');
         $comic = Comic::all();
 
         return $comic;

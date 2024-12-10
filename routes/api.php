@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ComicGetController;
 use App\Http\Controllers\ComicUploadController;
+use App\Http\Controllers\SeriesController;
 use App\Http\Middleware\CorsMiddleware;
 
 /*
@@ -19,6 +20,7 @@ use App\Http\Middleware\CorsMiddleware;
 |
 */
 
+Route::post('/series_create', [SeriesController::class, 'create'])->middleware(('cors'));
 Route::post('/upload', [ComicUploadController::class, 'upload'])->middleware('cors');
 Route::get('/comicGet', [ComicGetController::class, 'get']);
 

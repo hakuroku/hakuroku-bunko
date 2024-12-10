@@ -18,7 +18,7 @@ class ComicUploadController extends Controller
         //―――――登校データの取得・変数格納―――――――――――
         $comic_title = $data->comic_title;
         $series_title = $data->series_title;
-        $url = Storage::url('app/private/' . $comic_title);
+        $url = Storage::url('app/public/' . $comic_title);
         $author_name = $data->author_name;
         
         $comic_content = $data->file('comic_content');
@@ -30,7 +30,7 @@ class ComicUploadController extends Controller
 
             //―――登校データの保存－－－－－－－－－――――――
             foreach ($comic_content as $page) {
-                Storage::disk('local')->putFile($comic_title, $page);
+                Storage::disk('public')->putFile($comic_title, $page);
             }
 
             //―――――データベースにインサート―――――――

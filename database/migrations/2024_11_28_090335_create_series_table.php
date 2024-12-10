@@ -12,11 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('series', function (Blueprint $table) {
-            $table->id();
+            $table->id('series_id');
             $table->string('series_title');
-            $table->string('series_caption');
-            $table->string('main_illust')->nullable();
-            $table->string('icon_illust')->nullable();
+            $table->string('series_summury');
+            $table->foreignId('imgs_num')->constrained( table: 'series_img',indexName: 'series_imgs_id');
             $table->timestamps();
         });
     }
