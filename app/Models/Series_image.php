@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Series_image extends Model
 {
-    protected $primarykey = 'series_imgs_id';
+    protected $primaryKey = 'series_img_id';
 
     public function series(): BelongsTo {
         return $this->belongsTo('imgs_num');

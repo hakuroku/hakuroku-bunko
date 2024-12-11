@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('series', function (Blueprint $table) {
-            $table->id('series_id');
-            $table->string('series_title');
-            $table->string('series_summury');
-            $table->foreignId('imgs_num')->constrained( table: 'series_img',indexName: 'series_imgs_id');
+        Schema::create('comics', function (Blueprint $table) {
+            $table->id('comic_id');
+            $table->string('comic_title');
+            $table->foreignId('series_id');
+            $table->string('comic_content');
+            $table->string('author_name');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('series');
+        Schema::dropIfExists('comics');
     }
 };

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comic extends Model
 {
-    protected $primarykey = 'comic_id';
+    protected $primaryKey = 'comic_id';
 
     protected $fillable = [
         'comic_title',

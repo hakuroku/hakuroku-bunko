@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('series_images', function (Blueprint $table) {
-            $table->id('series_imgs_id');
+            $table->id('series_img_id');
             $table->binary('top_main_img');
             $table->binary('top_link_img');
             $table->binary('series_main_img');
