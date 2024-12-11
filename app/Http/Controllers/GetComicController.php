@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comic;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Comic;
 
-class ComicGetController extends Controller
+class GetComicController extends Controller
 {
     public function get() {
         // $path = Storage::url('app/private');
