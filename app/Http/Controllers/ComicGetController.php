@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 class ComicGetController extends Controller
 {
     public function get() {
-        $path = Storage::url('app/private');
-        $comic = Comic::all();
+        // $path = Storage::url('app/private');
+        $comic_info = Comic::all();
 
-        return $comic;
+        $data =  $comic_info;
+        return $data;
     }
-
-    
 }
