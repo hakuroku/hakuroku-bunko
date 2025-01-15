@@ -14,18 +14,18 @@ class SeriesSeeder extends Seeder
     public function run(): void
     {
         DB::table('series')->insert([
-            'series_title' => 'オカムラクエスト',
-            'series_caption' => 'オカムラは旅に出た。人類の大敵、"魔王"を倒すために…。'
+            'series_title' => '畳寿司',
+            'series_caption' => '美味しいお寿司で畳を食べませんか？'
         ]);
 
         DB::table('series')->insert([
-            'series_title' => 'オカムラファンタジー',
-            'series_caption' => 'あまたの種族が反映、それぞれの文明を築き対立する混沌とした世界に、岡村は…皇帝の地位についた。'
+            'series_title' => 'サラダ独立記念日',
+            'series_caption' => 'サラダが主食で何が悪い。米が主菜で何の問題があるのか。'
         ]);
 
         DB::table('series')->insert([
-            'series_title' => '走れ加藤',
-            'series_caption' => '加藤は激怒した。'
+            'series_title' => '順当裁判',
+            'series_caption' => 'その裁判は特に何も起こらず、無事終えました。'
         ]);
     }
 }
