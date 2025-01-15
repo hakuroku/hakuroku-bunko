@@ -46,20 +46,6 @@ class ComicUploadController extends Controller
         } 
     }
 
-    public function create(Request $request)
-    {
-
-        $series_title = $request->series_title;
-        $series_caption = $request->series_caption;
-
-        Series::create([
-            'series_title' => $series_title,
-            'series_caption' => $series_caption
-        ]);
-
-        return back();
-    }
-
     public function view()
     {
         return view('comics.upload');

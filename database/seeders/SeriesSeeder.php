@@ -14,18 +14,18 @@ class SeriesSeeder extends Seeder
     public function run(): void
     {
         DB::table('series')->insert([
-            'series_title' => '畳寿司',
-            'series_caption' => '美味しいお寿司で畳を食べませんか？'
+            'series_title' => '読み切り',
+            'series_caption' => '真道生の読み切り短編集。'
         ]);
 
         DB::table('series')->insert([
-            'series_title' => 'サラダ独立記念日',
-            'series_caption' => 'サラダが主食で何が悪い。米が主菜で何の問題があるのか。'
+            'series_title' => '妖精のいる街',
+            'series_caption' => 'かつて妖精が棲むと言われた緑豊かなその町で、今日も誰かの願いが消える。'
         ]);
 
         DB::table('series')->insert([
-            'series_title' => '順当裁判',
-            'series_caption' => 'その裁判は特に何も起こらず、無事終えました。'
+            'series_title' => 'さいのまほろば',
+            'series_caption' => '誰もが皆、己の理想を追求する権利を持っている。それは、超能力者達も同様に…。'
         ]);
     }
 }
