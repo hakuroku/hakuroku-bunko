@@ -30,3 +30,5 @@ Route::get('/getSeries', [GetSeriesController::class, 'get']);
 Route::get('/getComic', [GetComicController::class, 'get']);
 
 Route::get('/books', [BookController::class, 'index']);
+
+// Route::get('/ComicPage/{number}',[EpisodeController::class,'create']);
