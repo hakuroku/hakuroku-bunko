@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Storage;
 
 class GetEpisodeController extends Controller
 {
-    public function get() {
-        $imagePath = 'storage/app/public/I wish';
-        $imageData = base64_encode(Storage::get($imagePath));
+    public function get($directory) {
+        $images = Storage::disk('public')-> files($directory);
+        $imageDatas = array_map(function ($file) {
+            return Storage::url($file);
+        }, $images);
 
         return response()->json([
-            'image' => $imageData,
+            'pages' => $imageDatas,
         ]);
     }
 }
