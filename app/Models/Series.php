@@ -19,8 +19,4 @@ class Series extends Model
     public function comic(): HasMany {
         return $this->hasMany(Comic::class);
     }
-
-    public function series_imgs(): BelongsTo {
-        return $this->belongsTo('series_imgs_id');
-    }
 }

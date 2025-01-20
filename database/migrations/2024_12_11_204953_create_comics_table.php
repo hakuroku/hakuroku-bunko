@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('comics', function (Blueprint $table) {
             $table->id('comic_id');
             $table->string('comic_title');
+            $table->string('comic_caption');
             $table->foreignId('series_id');
             $table->string('comic_content');
             $table->string('author_name');

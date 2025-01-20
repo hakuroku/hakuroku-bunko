@@ -15,7 +15,10 @@ class SeriesSeeder extends Seeder
     {
         DB::table('series')->insert([
             'series_title' => '読み切り',
-            'series_caption' => '真道生の読み切り短編集。'
+            'series_caption' => '真道生の読み切り短編集。',
+            'top_main_img' => null,
+            'top_link_img' => null,
+             
         ]);
 
         DB::table('series')->insert([

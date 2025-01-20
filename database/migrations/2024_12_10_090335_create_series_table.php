@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id('series_id');
             $table->string('series_title');
             $table->string('series_caption');
-            $table->foreignId('imgs_num')->nullable();
+            $table->binary('top_main_img')->nullable();
+            $table->binary('top_link_img')->nullable();
             $table->timestamps();
         });
     }

@@ -9,8 +9,9 @@ class GetEpisodeController extends Controller
 {
     public function get($directory) {
         $images = Storage::disk('public')-> files($directory);
+        
         $imageDatas = array_map(function ($file) {
-            return Storage::url($file);
+            return url(Storage::url($file));
         }, $images);
 
         return response()->json([
