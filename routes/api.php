@@ -25,10 +25,10 @@ use App\Http\Middleware\CorsMiddleware;
 Route::post('/series_create', [SeriesController::class, 'create'])->middleware('cors');
 Route::post('/upload', [ComicUploadController::class, 'upload'])->middleware('cors');
 
-Route::get('/episode/{directory}', [GetEpisodeController::class, 'get']);
+// Route::get('/episode/{directory}', [GetEpisodeController::class, 'get']);
 Route::get('/getSeries', [GetSeriesController::class, 'get']);
 Route::get('/getComic', [GetComicController::class, 'get']);
 
 Route::get('/books', [BookController::class, 'index']);
 
-// Route::get('/ComicPage/{number}',[EpisodeController::class,'create']);
+

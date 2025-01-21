@@ -10,7 +10,6 @@ class GetSeriesController extends Controller
     public function get() {
         
         $data = Series::all();
-
         return $data;
     }
 }

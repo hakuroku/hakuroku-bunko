@@ -15,7 +15,7 @@ class GetEpisodeController extends Controller
         }, $images);
 
         return response()->json([
-            'pages' => $imageDatas,
+            'episode' => $imageDatas,
         ]);
     }
 }

@@ -13,7 +13,6 @@ class ComicUploadController extends Controller
     public function upload(Request $request)
     {
         //―――――Reactからのオブジェクト取得・変数格納―――――――――――
-        Log::info($request->all());
         $data = $request;
         
         

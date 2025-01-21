@@ -9,7 +9,6 @@ use App\Models\Series;
 use Illuminate\Support\Facades\Route;
 
 // Route::post('post', [ComicUploadController::class, 'create'])->name('series.create');
-Route::get('/comics/viewer', [GetTopViewController::class, 'getImg']);
 Route::post('/comics/upload', [ComicUploadController::class, 'upload']);
 
 Route::get('/comics/upload', [ComicUploadController::class, 'view']);
