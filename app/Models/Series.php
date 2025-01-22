@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Series extends Model
 {
-    protected $primaryKey = 'series_id';
    
     protected $fillable = [
         'series_title',

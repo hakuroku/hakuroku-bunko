@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comics', function (Blueprint $table) {
-            $table->id('comic_id');
+            $table->id();
             $table->string('comic_title');
             $table->string('comic_caption');
             $table->foreignId('series_id');
             $table->string('comic_content');
+            $table->string('comic_url');
             $table->string('author_name');
             $table->timestamps();
         });

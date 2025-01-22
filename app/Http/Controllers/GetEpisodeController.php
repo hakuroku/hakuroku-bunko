@@ -10,12 +10,18 @@ class GetEpisodeController extends Controller
     public function get($directory) {
         $images = Storage::disk('public')-> files($directory);
         
+        usort($images, function ($a, $b) {
+            preg_match('/\.(\d+)\./', basename($a), $matchesA);
+            preg_match('/\.(\d+)\./', basename($b), $matchesB);
+            return (int)$matchesA[1] - (int)$matchesB[1];
+        });
+
         $imageDatas = array_map(function ($file) {
             return url(Storage::url($file));
         }, $images);
 
         return response()->json([
-            'episode' => $imageDatas,
+            'pages' => $imageDatas,
         ]);
     }
 }
