@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('series_title');
             $table->string('series_caption');
+            $table->boolean('top_icon_role');
             $table->binary('top_main_img')->nullable();
             $table->binary('top_link_img')->nullable();
             $table->timestamps();

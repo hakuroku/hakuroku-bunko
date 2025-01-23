@@ -21,7 +21,7 @@ class ComicUploadController extends Controller
         $directoryName = Str::uuid()->toString();
 
         $comic_caption = $data->comic_caption;
-        $series_id = $data->series_id;
+        $series_id = (int) $data->series_id;
         $url = Storage::url($directoryName);
         $author_name = $data->author_name;
         

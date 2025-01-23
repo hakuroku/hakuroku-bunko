@@ -12,7 +12,10 @@ class Series extends Model
    
     protected $fillable = [
         'series_title',
-        'series_caption'
+        'series_caption',
+        'top_icon_role',
+        'top_main_img',
+        'top_link_img',
     ];
 
     public function comic(): HasMany {
