@@ -13,4 +13,9 @@ class GetSeriesController extends Controller
         $data = Series::select('id', 'series_title', )->get();
         return $data;
     }
+
+    public function getIcons() {
+        $series = Series::where('top_icon_role', true)->select('id', 'series_title')-> get();
+        return $series;
+    }
 }
