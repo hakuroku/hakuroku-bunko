@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Storage;
 class GetEpisodeController extends Controller
 {
     public function get($directory) {
-        $images = Storage::disk('public')-> files($directory);
+        
+        $images = Storage::disk('public')-> files('uploads/comics/'.$directory);
         
         usort($images, function ($a, $b) {
             preg_match('/\.(\d+)\./', basename($a), $matchesA);

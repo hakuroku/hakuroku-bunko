@@ -22,7 +22,7 @@ class ComicUploadController extends Controller
 
         $comic_caption = $data->comic_caption;
         $series_id = (int) $data->series_id;
-        $url = Storage::url($directoryName);
+        $url = Storage::url('uploads/comics/'.$directoryName);
         $author_name = $data->author_name;
         
         $comic_content = $data->file('comic_content');
@@ -37,7 +37,7 @@ class ComicUploadController extends Controller
                 $extension = $page->getClientOriginalExtension();
                 $counter = $this->getFileCount($directoryName);
                 $fileName = Str::uuid().'.'.$counter.'.'.$extension;
-                $page->storeAs($directoryName, $fileName, 'public'); //putFileメソッドは自動でディレクトリを作成してくれる。
+                $page->storeAs('uploads/comics/'.$directoryName, $fileName, 'public');
             }
 
             //―――――データベースにインサート―――――――
@@ -56,7 +56,7 @@ class ComicUploadController extends Controller
     }
 
     private function getFileCount($directoryName) {
-        $files = Storage::disk('public')->files($directoryName);
+        $files = Storage::disk('public')->files('uploads/comics/'.$directoryName);
         return count($files) + 1;
     }
 
