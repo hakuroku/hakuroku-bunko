@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class GetEpisodeController extends Controller
 {
-    public function get($directory) {
+    public function getEpisodeContent($directory) {
         
         $images = Storage::disk('public')-> files('uploads/comics/'.$directory);
         

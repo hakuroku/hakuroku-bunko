@@ -8,30 +8,22 @@ use Illuminate\Support\Str;
 use App\Models\Comic;
 use Illuminate\Support\Facades\Log;
 
-class ComicUploadController extends Controller
+class ComicController extends Controller
 {
-    public function upload(Request $request)
-    {
-        //―――――Reactからのオブジェクト取得・変数格納―――――――――――
-        $data = $request;
-        
-        
+    public function upload(Request $request) //Requestクラスのインスタンス生成
+    {     
         //―――――登校データの取得・変数格納―――――――――――
-        $comic_title = $data->comic_title;
-        $directoryName = Str::uuid()->toString();
+        $comic_title = $request->comic_title; //requestオブジェクトのcomic_titleプロパティにアクセスしている
+        $directoryName = Str::uuid()->toString(); //Strクラスのuuidメソッドにアクセス、返値uuidオブジェクトのメソッドtoStringにアクセス
 
-        $comic_caption = $data->comic_caption;
-        $series_id = (int) $data->series_id;
+        $comic_caption = $request->comic_caption;
+        $series_id = (int) $request->series_id;
         $url = Storage::url('uploads/comics/'.$directoryName);
-        $author_name = $data->author_name;
+        $author_name = $request->author_name;
+        $comic_content = $request->file('comic_content'); //Requestインスタンスのfileメソッドにアクセスしている
         
-        $comic_content = $data->file('comic_content');
-        
-        
-
         if ($request->hasFile('comic_content')) {
            
-
             //―――登校データの保存－－－－－－－－－――――――
             foreach ($comic_content as $page) {
                 $extension = $page->getClientOriginalExtension();
@@ -60,8 +52,4 @@ class ComicUploadController extends Controller
         return count($files) + 1;
     }
 
-    public function view()
-    {
-        return view('comics.upload');
-    }
 }

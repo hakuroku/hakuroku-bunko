@@ -18,5 +18,14 @@ class SeriesController extends Controller
         ]);
         return (['response' => 'OK']);
     }
+    
+    public function getPostSelectSeriesItems() {
+        $data = Series::select('id', 'series_title', )->get();
+        return $data;
+    }
 
+    public function getDashBoardIcons() {
+        $series = Series::where('top_icon_role', true)->select('id', 'series_title')-> get();
+        return $series;
+    }
 }
