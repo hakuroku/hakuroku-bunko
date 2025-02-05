@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Comic;
+use App\Models\Episode;
 use App\Models\Series;
 
 class getTopViewController extends Controller
@@ -14,10 +14,10 @@ class getTopViewController extends Controller
         $dataSet = [];
         $seriesIDs = Series::where('top_icon_role', true )->pluck('id');
         foreach ($seriesIDs as $seriesID) {
-            $comicUrl = Comic::select('comic_url')
-            ->join('series', 'series.id', '=', 'comics.series_id')
+            $comicUrl = Episode::select('comic_url')
+            ->join('series', 'series.id', '=', 'episodes.series_id')
             ->where('series_id', $seriesID)
-            ->orderBy('comics.id', 'asc')
+            ->orderBy('episodes.id', 'asc')
             ->limit(1)
             ->value('comic_url');
 

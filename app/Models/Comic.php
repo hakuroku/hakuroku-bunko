@@ -16,10 +16,6 @@ class Comic extends Model
         'author_name',
         'series_img'
     ];
-
-    public function series(): BelongsTo {
-        return $this->belongsTo(Series::class);
-    }
 }
 
 

@@ -4,14 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\GetComicController;
-use App\Http\Controllers\ComicController;
-use App\Http\Controllers\GetEpisodeController;
-use App\Http\Controllers\GetSeriesController;
+use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\getTopViewController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\TopUpdateController;
-use App\Http\Middleware\CorsMiddleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +21,15 @@ use App\Http\Middleware\CorsMiddleware;
 |
 */
 
-Route::patch('/update/addIcon', [TopUpdateController::class, 'addIcon']);
-Route::post('/series_create', [SeriesController::class, 'create'])->middleware('cors');
-Route::post('/upload', [ComicController::class, 'upload'])->middleware('cors');
+Route::post('/update/add-icon', [TopUpdateController::class, 'addIcon']);
+Route::post('/series-create', [SeriesController::class, 'create'])->middleware('cors');
+Route::post('/upload', [EpisodeController::class, 'upload'])->middleware('cors');
 
-Route::get('/getTopIcons',[SeriesController::class, 'getDashBoardIcons']);
-Route::get('/getTopView', [getTopViewController::class, 'get']);
-Route::get('/episode/{directory}', [GetEpisodeController::class, 'getEpisodeContent']);
-Route::get('/getSeries', [SeriesController::class, 'getPostSelectSeriesItems']);
-Route::get('/getComic', [GetComicController::class, 'get']);
+Route::get('/get-top-icons',[SeriesController::class, 'getDashBoardIcons']);
+Route::get('/get-top-info', [getTopViewController::class, 'get']);
+Route::get('/episode/{directory}', [EpisodeController::class, 'getEpisodeContent']);
+Route::get('/get-series', [SeriesController::class, 'getPostSelectSeriesItems']);
+Route::get('/get-episodes', [EpisodeController::class, 'getEpisodeContent']);
 
 Route::get('/books', [BookController::class, 'index']);
 
