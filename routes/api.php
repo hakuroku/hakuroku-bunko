@@ -8,7 +8,7 @@ use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\getTopViewController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\TopUpdateController;
-
+use App\Models\Series;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +21,17 @@ use App\Http\Controllers\TopUpdateController;
 |
 */
 
-Route::post('/update/add-icon', [TopUpdateController::class, 'addIcon']);
-Route::post('/series-create', [SeriesController::class, 'create'])->middleware('cors');
+Route::post('/update/delete-icon', [SeriesController::class, 'deleteIcon']);
+Route::post('/update/update-icon', [SeriesController::class, 'updateIcon']);
+Route::post('/update/add-icon', [SeriesController::class, 'addIcon']);
+Route::post('/create/series', [SeriesController::class, 'create'])->middleware('cors');
 Route::post('/upload', [EpisodeController::class, 'upload'])->middleware('cors');
 
-Route::get('/get-top-icons',[SeriesController::class, 'getDashBoardIcons']);
-Route::get('/get-top-info', [getTopViewController::class, 'get']);
+Route::get('/get/top-icons',[SeriesController::class, 'getDashBoardIcons']);
 Route::get('/episode/{directory}', [EpisodeController::class, 'getEpisodeContent']);
-Route::get('/get-series', [SeriesController::class, 'getPostSelectSeriesItems']);
-Route::get('/get-episodes', [EpisodeController::class, 'getEpisodeContent']);
+Route::get('/get/episode', [EpisodeController::class, 'getEpisodeList']);
+Route::get('/get/post-series', [SeriesController::class, 'getPostSelectSeriesItems']);
+Route::get('/get/top-info', [getTopViewController::class, 'get']);
 
 Route::get('/books', [BookController::class, 'index']);
 
