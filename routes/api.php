@@ -22,7 +22,7 @@ use App\Models\Series;
 */
 
 Route::post('/update/delete-icon', [SeriesController::class, 'deleteIcon']);
-Route::post('/update/update-icon', [SeriesController::class, 'updateIcon']);
+Route::post('/update/change-icon', [SeriesController::class, 'changeIcon']);
 Route::post('/update/add-icon', [SeriesController::class, 'addIcon']);
 Route::post('/create/series', [SeriesController::class, 'create'])->middleware('cors');
 Route::post('/upload', [EpisodeController::class, 'upload'])->middleware('cors');
@@ -30,7 +30,8 @@ Route::post('/upload', [EpisodeController::class, 'upload'])->middleware('cors')
 Route::get('/get/top-icons',[SeriesController::class, 'getDashBoardIcons']);
 Route::get('/episode/{directory}', [EpisodeController::class, 'getEpisodeContent']);
 Route::get('/get/episode', [EpisodeController::class, 'getEpisodeList']);
-Route::get('/get/post-series', [SeriesController::class, 'getPostSelectSeriesItems']);
+Route::get('/get/upload-series', [SeriesController::class, 'getUploadSeriesSelectItems']);
+Route::get('/get/seriesList', [SeriesController::class, 'getSeriesList']);
 Route::get('/get/top-info', [getTopViewController::class, 'get']);
 
 Route::get('/books', [BookController::class, 'index']);

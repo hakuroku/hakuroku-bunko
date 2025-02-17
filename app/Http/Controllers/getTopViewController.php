@@ -14,12 +14,13 @@ class getTopViewController extends Controller
         $dataSet = [];
         $seriesIDs = Series::where('top_icon_role', true )->pluck('id');
         foreach ($seriesIDs as $seriesID) {
-            $comicUrl = Episode::select('comic_url')
-            ->join('series', 'series.id', '=', 'episodes.series_id')
+            $comicUrl = Episode::select('episode_url')
+            ->join('series', 'id', '=', 'episodes.series_id')
             ->where('series_id', $seriesID)
             ->orderBy('episodes.id', 'asc')
             ->limit(1)
-            ->value('comic_url');
+            ->value('episode_url')
+            ->get();
 
             $dataSet[$seriesID] = $comicUrl; 
         }
