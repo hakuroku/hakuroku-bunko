@@ -93,8 +93,8 @@ class SeriesController extends Controller
             $topLinkImg = $request->file('top_link_img');
             $topLinkImg->store('uploads/topLinks/'.$directoryName, 'public');
         }
-        $topMainUrl = Storage::url('uploads/topViews/').$directoryName;
-        $topLinkUrl = Storage::url('uploads/topLinks/').$directoryName;
+        $topMainUrl = 'uploads/topViews/'.$directoryName;
+        $topLinkUrl = 'uploads/topLinks/'.$directoryName;
         Series::where('id', $seriesId)->update([
             'top_main_img' => $topMainUrl,
             'top_link_img' => $topLinkUrl,
