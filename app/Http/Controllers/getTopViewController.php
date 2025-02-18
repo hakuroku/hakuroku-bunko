@@ -27,7 +27,7 @@ class getTopViewController extends Controller
             $dataSet[$seriesID] = $comicUrl; 
 
             
-            $seriesTitle = Series::where('id', $seriesID)->get('series_title');
+            $seriesTitle = Series::where('id', $seriesID)->pluck('series_title')->first();
             $titleSet[$seriesID] = $seriesTitle; 
             
 
