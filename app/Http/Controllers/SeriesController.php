@@ -61,19 +61,16 @@ class SeriesController extends Controller
         $seriesId = $request->series_id;
         $directoryName = Str::uuid()->toString();
         if ($request->hasFile('top_main_img')) {
-            $topMainImg = $request->file('top_main_img');
-            $topMainImg->store('uploads/topViews/'.$directoryName, 'public');
+            $MainImgFilePath = $request->file('top_main_img')->store('uploads/topViews/'.$directoryName, 'public');
         }
         if ($request->hasFile('top_link_img')) {
-            $topLinkImg = $request->file('top_link_img');
-            $topLinkImg->store('uploads/topLinks/'.$directoryName, 'public');
+            $LinkImgFilePath = $request->file('top_link_img')->store('uploads/topLinks/'.$directoryName, 'public');
         }
         //―――――データベースにインサート―――――――
-        $topMainUrl = Storage::url('uploads/topViews/').$directoryName;
-        $topLinkUrl = Storage::url('uploads/topLinks/').$directoryName;
+        
         Series::where('id', $seriesId)->update([
-            'top_main_img' => $topMainUrl,
-            'top_link_img' => $topLinkUrl,
+            'top_main_img' => $MainImgFilePath,
+            'top_link_img' => $LinkImgFilePath,
             'top_icon_role' => true
         ]);
 
@@ -86,18 +83,14 @@ class SeriesController extends Controller
         $seriesId = $request->series_id;
         $directoryName = Str::uuid()->toString();
         if ($request->hasFile('top_main_img')) {
-            $topMainImg = $request->file('top_main_img');
-            $topMainImg->store('uploads/topViews/'.$directoryName, 'public');
+            $MainImgFilePath = $request->file('top_main_img')->store('uploads/topViews/'.$directoryName, 'public');
         }
         if ($request->hasFile('top_link_img')) {
-            $topLinkImg = $request->file('top_link_img');
-            $topLinkImg->store('uploads/topLinks/'.$directoryName, 'public');
+            $LinkImgFilePath = $request->file('top_link_img')->store('uploads/topLinks/'.$directoryName, 'public');
         }
-        $topMainUrl = 'uploads/topViews/'.$directoryName;
-        $topLinkUrl = 'uploads/topLinks/'.$directoryName;
         Series::where('id', $seriesId)->update([
-            'top_main_img' => $topMainUrl,
-            'top_link_img' => $topLinkUrl,
+            'top_main_img' => $MainImgFilePath,
+            'top_link_img' => $LinkImgFilePath,
         ]);
         return response()->json([
             'request' => 'OK'

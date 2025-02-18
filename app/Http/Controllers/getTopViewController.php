@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Episode;
 use App\Models\Series;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class getTopViewController extends Controller
 {
@@ -13,7 +14,7 @@ class getTopViewController extends Controller
         
         $titleSet = [];
         $dataSet = [];
-        $TopViewImgSet = [];
+        $topMainImgSet = [];
         $topLinkImgSet = [];
         $seriesIDs = Series::where('top_icon_role', true )->pluck('id');
         foreach ($seriesIDs as $seriesID) {
@@ -25,21 +26,42 @@ class getTopViewController extends Controller
             ->value('episode_url');
             $dataSet[$seriesID] = $comicUrl; 
 
-            $seriesTitle = Series::where('id', $seriesID)->pluck('series_title');
+            
+            $seriesTitle = Series::where('id', $seriesID)->get('series_title');
             $titleSet[$seriesID] = $seriesTitle; 
+            
 
+            
             $topViewUrlPath = Series::where('id', $seriesID)->pluck('top_main_img')->first();
-            $urlPath = Storage::url($topViewUrlPath);
-            $TopViewImgSet[$seriesID] = $urlPath; 
-                
+            $correctedMainPath = str_replace('\\', '/', $topViewUrlPath); 
+            if (Storage::disk('public')->exists($correctedMainPath)) {
+                $urlMainPath = Storage::disk('public')->url($correctedMainPath);
+                $topMainImg = $urlMainPath;
+                $topMainImgSet[$seriesID] = $topMainImg;
+            } else {
+                Log::error('ファイルが存在しません: ' . $correctedMainPath);
+                $pages = 'ファイルが存在しません。';
+            }
+                    
+            $topLinkUrlPath = Series::where('id', $seriesID)->pluck('top_link_img')->first();
+            $correctedLinkPath = str_replace('\\', '/', $topLinkUrlPath); // パスの区切り文字を修正
+            if (Storage::disk('public')->exists($correctedLinkPath)) {
+                $urlLinkPath = Storage::disk('public')->url($correctedLinkPath);
+                $topLinkImg = $urlLinkPath;
+                $topLinkImgSet[$seriesID] = $urlLinkPath;
+            } else {
+                Log::error('ファイルが存在しません: ' . $correctedLinkPath);
+                $pages = 'ファイルが存在しません。';
+            }
         }
-
-        $result = [
-            'series_title' => $titleSet,
-            'episode_url' => $dataSet,
-            'top_main_img' => $TopViewImgSet
-        ];
-        
-        return response()-> json($result);
+           
+            
+            return response()->json([
+                'seriesTitle' => $titleSet,
+                'episodeUrl' => $dataSet,
+                'seriesMainImg' => $topMainImgSet,
+                'seriesLinkImg' => $topLinkImgSet
+            ]);
     }
 }
+
