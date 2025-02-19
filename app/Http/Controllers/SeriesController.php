@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\Series;
 use App\Models\Episode;
-
+use Illuminate\Support\Facades\Log;
 
 class SeriesController extends Controller
 {
@@ -51,12 +51,43 @@ class SeriesController extends Controller
         return $data;
     }
 
-    public function getDashBoardAddIcons() {
-        $series = Series::where('top_icon_role', true)->select('id', 'series_title')-> get();
-        return $series;
+    public function getAddTopLinks(){
+        $series_title = $this->getSeriesRoleOff();
+        return $series_title;
+    }
+    public function getChangeTopLinks(){
+        $series_title = $this->getSeriesRoleon();
+        return $series_title;
     }
 
-    public function addIcon(Request $request)
+    public function getDeleteTopLinks(){
+        $series_title = $this->getSeriesRoleOn();
+        return $series_title;
+    }
+
+    function getSeriesRoleOn() {
+        try{
+            $series_title = Series::where('top_icon_role', true)->select('id', 'series_title')->get();
+            return $series_title;
+        } catch (\Exception $e) {
+            Log::error($e);
+            return null;
+        }
+    }
+
+    function getSeriesRoleOff(){
+        try{
+            $series_title = Series::where('top_icon_role', false)->select('id', 'series_title')->get();
+            return $series_title;
+        } catch (\Exception $e) {
+            Log::error($e);
+            return null;
+        } 
+    }
+
+    
+
+    public function addLink(Request $request)
     {
         $seriesId = $request->series_id;
         $directoryName = Str::uuid()->toString();
@@ -79,7 +110,7 @@ class SeriesController extends Controller
         ]);
     }
 
-    public function changeIcon(Request $request) {
+    public function changeLink(Request $request) {
         $seriesId = $request->series_id;
         $directoryName = Str::uuid()->toString();
         if ($request->hasFile('top_main_img')) {
@@ -97,7 +128,7 @@ class SeriesController extends Controller
         ]);
     }
 
-    public function deleteIcon(Request $request) {
+    public function deleteLink(Request $request) {
         $seriesId = $request->series_id;
         Series::where('id', $seriesId)->update([
             'top_icon_role' => false

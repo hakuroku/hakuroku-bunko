@@ -21,13 +21,15 @@ use App\Models\Series;
 |
 */
 
-Route::post('/update/delete-icon', [SeriesController::class, 'deleteIcon']);
-Route::post('/update/change-icon', [SeriesController::class, 'changeIcon']);
-Route::post('/update/add-icon', [SeriesController::class, 'addIcon']);
+Route::post('/delete/top-link', [SeriesController::class, 'deleteLink']);
+Route::post('/change/top-link', [SeriesController::class, 'changeLink']);
+Route::post('/add/top-link', [SeriesController::class, 'addLink']);
 Route::post('/create/series', [SeriesController::class, 'create'])->middleware('cors');
 Route::post('/upload', [EpisodeController::class, 'upload'])->middleware('cors');
 
-Route::get('/get/top-icons',[SeriesController::class, 'getDashBoardIcons']);
+Route::get('/get/add/top-links', [SeriesController::class, 'getAddTopLinks']);
+Route::get('/get/change/top-links', [SeriesController::class, 'getChangeTopLinks']);
+Route::get('/get/delete/top-links',[SeriesController::class, 'getDeleteTopLinks']);
 Route::get('/episode/{directory}', [EpisodeController::class, 'getEpisodeContent']);
 Route::get('/get/episode', [EpisodeController::class, 'getEpisodeList']);
 Route::get('/get/upload-series', [SeriesController::class, 'getUploadSeriesSelectItems']);
