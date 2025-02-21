@@ -56,7 +56,7 @@ class SeriesController extends Controller
         return $series_title;
     }
     public function getChangeTopLinks(){
-        $series_title = $this->getSeriesRoleon();
+        $series_title = $this->getSeriesRoleOn();
         return $series_title;
     }
 

@@ -37,5 +37,3 @@ Route::get('/get/seriesList', [SeriesController::class, 'getSeriesList']);
 Route::get('/get/top-info', [getTopViewController::class, 'get']);
 
 Route::get('/books', [BookController::class, 'index']);
-
-
