@@ -21,6 +21,10 @@ use App\Models\Series;
 |
 */
 
+Route::middleware((['auth', 'admin'])->grpup(function () {
+    Route::get('/admin/login', [AdminController::class, 'index'])->middleware('cors');
+}));
+
 Route::post('/delete/top-link', [SeriesController::class, 'deleteLink']);
 Route::post('/change/top-link', [SeriesController::class, 'changeLink']);
 Route::post('/add/top-link', [SeriesController::class, 'addLink']);
