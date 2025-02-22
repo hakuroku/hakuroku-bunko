@@ -15,17 +15,18 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'cors' => CorsMiddleware::class
-        ]);
-
-        $middleware->api(prepend: [
-            'cors' => CorsMiddleware::class
-        ]);
-
-        $middleware->alias([
-            'admin' => \App\Http\Middleware\AdminMiddleware::class
+            'cors' => CorsMiddleware::class,
+            'stateful' => \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'throttle' =>  \Illuminate\Routing\Middleware\ThrottleRequests::class,
+            'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
         
+        $middleware->group('api', [
+            'cors' => CorsMiddleware::class,
+            'stateful',
+            'throttle',
+            'bindings',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

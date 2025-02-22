@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "763777c208315d79cc14d507e5e62da1",
+    "content-hash": "d8fadc01672f81d7897cc15ba48a5e0d",
     "packages": [
         {
             "name": "brick/math",
@@ -6208,16 +6208,16 @@
         },
         {
             "name": "laravel/breeze",
-            "version": "v2.2.5",
+            "version": "v2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/breeze.git",
-                "reference": "e698f651ac55920fd2ee1336c3c6cdd2467ea784"
+                "reference": "e456fe0db93d1f9f5ce3b2043739a0777404395c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/breeze/zipball/e698f651ac55920fd2ee1336c3c6cdd2467ea784",
-                "reference": "e698f651ac55920fd2ee1336c3c6cdd2467ea784",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/e456fe0db93d1f9f5ce3b2043739a0777404395c",
+                "reference": "e456fe0db93d1f9f5ce3b2043739a0777404395c",
                 "shasum": ""
             },
             "require": {
@@ -6229,8 +6229,9 @@
                 "symfony/console": "^7.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^9.0",
-                "phpstan/phpstan": "^1.10"
+                "laravel/framework": "^11.0",
+                "orchestra/testbench-core": "^9.0",
+                "phpstan/phpstan": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -6264,7 +6265,7 @@
                 "issues": "https://github.com/laravel/breeze/issues",
                 "source": "https://github.com/laravel/breeze"
             },
-            "time": "2024-11-12T14:56:47+00:00"
+            "time": "2025-02-11T13:19:28+00:00"
         },
         {
             "name": "laravel/pail",

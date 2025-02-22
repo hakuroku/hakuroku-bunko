@@ -7,6 +7,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\getTopViewController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TopUpdateController;
 use App\Models\Series;
 
@@ -21,10 +22,7 @@ use App\Models\Series;
 |
 */
 
-Route::middleware((['auth', 'admin'])->grpup(function () {
-    Route::get('/admin/login', [AdminController::class, 'index'])->middleware('cors');
-}));
-
+Route::post('/admin/login', [AuthController::class, 'login']);
 Route::post('/delete/top-link', [SeriesController::class, 'deleteLink']);
 Route::post('/change/top-link', [SeriesController::class, 'changeLink']);
 Route::post('/add/top-link', [SeriesController::class, 'addLink']);
